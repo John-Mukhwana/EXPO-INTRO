@@ -3,8 +3,10 @@ import React from 'react'
 
 export default function LoginScreen () {
   return (
-    <View>
-      <Text>Login Screen</Text>
+    <View className="bg-green-800 h-full ">
+
+      <Text className="text-black">Login Screen</Text>
+
     </View>
   )
 }

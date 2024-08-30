@@ -1,13 +1,14 @@
+import { Link } from "expo-router";
 import { Text, View } from "react-native";
+
 
 export default function Index() {
   return (
-    <View
-      
-      className="bg-blue-900 flex-1 justify-center items-center"
-    >
-      <Text className="text-Green-950 bg">Edit app/index bato majoni fdbg.</Text>
-    
+    <View className="bg-green-900 flex-1 ">
+
+     <Link href={'/login'}>
+      <Text className="text-black text-2xl">GO TO Login Screen</Text>
+     </Link>
     </View>
   );
 }
