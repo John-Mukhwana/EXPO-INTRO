@@ -11,8 +11,9 @@ module.exports = {
         '500px': '500px',  // Add custom height of 500px
       },
       colors: {
-        primary: '#E8B920E8',
+        primary: '#E8B920',
         gray: '#8F8E8D',
+        white:'#FFFFFF',
       },
     },
   },
