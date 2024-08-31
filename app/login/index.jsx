@@ -6,15 +6,14 @@ export default function LoginScreen () {
     <View className=" h-full ">
 
      <Image source = {require('./../../assets/images/login.png')}
-       className="w-full h-1/2 "
-       style={{width: "100%", height: 500}}
-     />
+       className="w-full h-[500px] " />
+
       < View className="flex p-5 items-center">
 
-        <Text className="text-3xl text-center" style={{fontFamily:'outfit-bold'}} >
+        <Text className="text-3xl text-center font-[outfit-bold]"  >
           Ready to make a new friend ?
         </Text>
-        <Text></Text>
+        <Text className="text-center font-[outfit] text-[18px]">Lets adopt the pet which you like and make there life happy again</Text>
 
       </View>
 
