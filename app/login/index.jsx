@@ -49,7 +49,7 @@ export default function LoginScreen () {
         </Text>
         <Text className="text-center font-[outfit] text-[18px] text-gray-500  ">Lets adopt the pet which you like and make there life happy again</Text>
        
-        <Pressable onPress={onPress} className="p-[14px] mt-[100px] w-full bg-primary rounded-[14px]">
+        <Pressable onPress={onPress} className="p-[14px] mt-[50px] w-full bg-primary rounded-[14px]">
           <Text className="font-[outfit-medium] text-[20px] text-center">Get Started</Text>
         </Pressable>
       </View>
