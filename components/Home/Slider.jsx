@@ -1,47 +1,57 @@
 
-
+{/* Add comments */}
+// Import necessary dependencies
 import { View, Image, FlatList, StyleSheet, Dimensions } from 'react-native'
-import React,{useEffect,useState} from 'react'
-import {db} from './../../config/FirebaseConfig'
+import React, { useEffect, useState } from 'react'
+import { db } from './../../config/FirebaseConfig'
 import { collection, getDocs } from "firebase/firestore";
 
+// Define the Slider component
 export default function Slider() {
 
-    const [sliderList,setSliderList]=useState([]);
+    // Define state variable to store the slider list
+    const [sliderList, setSliderList] = useState([]);
 
-    useEffect( ()=>{
-      GetSliders();
-    },[])
+    // Fetch the sliders from the database on component mount
+    useEffect(() => {
+        GetSliders();
+    }, [])
 
-    const GetSliders=async()=>{
+    // Function to fetch the sliders from the database
+    const GetSliders = async () => {
+        // Clear the slider list
         setSliderList([]);
-         const snapshot = await getDocs(collection(db,'Sliders'));
-         snapshot.forEach((doc)=>{
-              console.log(doc.data());
-             
-              setSliderList(sliderList=>[...sliderList,doc.data()]);
-         })
+        // Fetch the sliders from the "Sliders" collection in the database
+        const snapshot = await getDocs(collection(db, 'Sliders'));
+        // Iterate over each slider document and add it to the slider list
+        snapshot.forEach((doc) => {
+            console.log(doc.data());
+            setSliderList(sliderList => [...sliderList, doc.data()]);
+        })
     }
 
-  return (
-    <View className="mt-[15]">
-        <FlatList
-         data={sliderList}
-         horizontal={true}
-         showsHorizontalScrollIndicator={false}
-         renderItem={({item,index})=>(
-                                       
-                        <View>
-                         <Image source={{uri:item?.imageUrl}}
-                           style={styles?.sliderImage}
-                         />
-                        </View>
-         )}       
-        />
-    </View>
-  )
+    // Render the Slider component
+    return (
+        <View className="mt-[15]">
+            {/* Render a FlatList to display the sliders */}
+            <FlatList
+                data={sliderList}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item, index }) => (
+                    <View>
+                        {/* Render an Image component for each slider */}
+                        <Image source={{ uri: item?.imageUrl }}
+                            style={styles?.sliderImage}
+                        />
+                    </View>
+                )}
+            />
+        </View>
+    )
 }
 
+{/* Define the styles for the Slider component*/} 
 const styles=StyleSheet.create({
     sliderImage:{
         width:Dimensions.get('screen').width*0.9,
