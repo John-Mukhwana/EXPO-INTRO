@@ -6,7 +6,7 @@ module.exports = {
       fontFamily: {
         'outfit-bold': ['Outfit-Bold'],
         'outfit': ['Outfit-Regular'],
-        'outfit-medium': ['Outfit-Medium'],
+        'outfit-medium': ['Outfit-Medium']
       },
       height: {
         '500px': '500px',  // Add custom height of 500px
