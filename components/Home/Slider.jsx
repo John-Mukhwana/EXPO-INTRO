@@ -53,6 +53,7 @@ export default function Slider() {
 
 {/* Define the styles for the Slider component*/} 
 const styles=StyleSheet.create({
+    
     sliderImage:{
         width:Dimensions.get('screen').width*0.9,
         height:170,
