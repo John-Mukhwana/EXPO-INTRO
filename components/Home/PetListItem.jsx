@@ -11,17 +11,13 @@ export default function PetListItem({pet}) {
         marginRight:15,
         backgroundColor:'skyblue',
         borderRadius:15,
+     }}>
 
-    }}>
       <Image source={{uri:pet.imageUrl}}
          className="w-[150px] h-[140px] rounded-3xl"
       />
       <Text
-        style={{
-            fontFamily:'outfit-medium',
-            fontSize:18,
-        }} 
-      >{pet.name}
+        style={{fontFamily:'outfit-medium',fontSize:17}}>{pet.name}
       </Text>
 
       <View className="flex flex-row justify-between">
