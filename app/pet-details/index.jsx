@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
 import { useEffect } from 'react';
+import PetInfo from '../../components/PetDetails/petInfo';
 
 export default function petDetails() {
     const pet=useLocalSearchParams();
@@ -18,7 +19,7 @@ export default function petDetails() {
   return (
     <View>
        {/* Pet info */}
-     
+         <PetInfo pet={pet}/>
        {/* Pet properties */}
 
        {/* about */}
