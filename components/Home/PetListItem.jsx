@@ -11,6 +11,7 @@ export default function PetListItem({pet}) {
         marginRight:15,
         backgroundColor:'skyblue',
         borderRadius:15,
+        
      }}>
 
       <Image source={{uri:pet.imageUrl}}
