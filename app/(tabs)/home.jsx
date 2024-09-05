@@ -5,6 +5,7 @@ import React from 'react'
 import Header from '../../components/Home/Header'
 import Slider from '../../components/Home/Slider'
 import PetListByCategory from '../../components/Home/PetListByCategory'
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function Home() {
   return (
@@ -22,6 +23,10 @@ export default function Home() {
 
 
       {/* Add new pet option */}
+      <View>
+      <MaterialIcons name="pets" size={24} color="black" />
+        <Text>Add New Pet</Text>
+      </View>
 
 
     </View>
