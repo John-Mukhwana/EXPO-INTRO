@@ -23,7 +23,7 @@ export default function Home() {
 
 
       {/* Add new pet option */}
-      <View>
+      <View className="flex flex-row gap-[10] items-center p-[20] mt-[10]">
       <MaterialIcons name="pets" size={24} color="black" />
         <Text>Add New Pet</Text>
       </View>
