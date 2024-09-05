@@ -18,7 +18,7 @@ export default function petDetails() {
   return (
     <View>
        {/* Pet info */}
-
+     
        {/* Pet properties */}
 
        {/* about */}
