@@ -17,7 +17,17 @@ export default function petDetails() {
     },[])
   return (
     <View>
-      <Text>{JSON.stringify(pet)}</Text>
+       {/* Pet info */}
+
+       {/* Pet properties */}
+
+       {/* about */}
+
+       {/*owner details*/}
+
+       {/**Adopt me button */}
+
+
     </View>
   )
 }
