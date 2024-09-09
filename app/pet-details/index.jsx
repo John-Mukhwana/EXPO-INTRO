@@ -5,6 +5,7 @@ import { useLocalSearchParams, useNavigation } from 'expo-router'
 import { useEffect } from 'react';
 import PetInfo from '../../components/PetDetails/petInfo';
 import PetSubInfo from '../../components/PetDetails/PetSubInfo';
+import AboutPet from '../../components/PetDetails/AboutPet';
 
 export default function petDetails() {
     const pet=useLocalSearchParams();
@@ -24,6 +25,7 @@ export default function petDetails() {
        {/* Pet properties */}
          <PetSubInfo pet={pet}/>
        {/* about */}
+       <AboutPet/>
 
        {/*owner details*/}
 
