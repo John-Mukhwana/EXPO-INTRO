@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import PetInfo from '../../components/PetDetails/petInfo';
 import PetSubInfo from '../../components/PetDetails/PetSubInfo';
 import AboutPet from '../../components/PetDetails/AboutPet';
+import OwnerInfo from '../../components/PetDetails/OwnerInfo';
 
 export default function petDetails() {
     const pet=useLocalSearchParams();
@@ -30,6 +31,7 @@ export default function petDetails() {
        <AboutPet pet={pet}/>
 
        {/*owner details*/}
+       <OwnerInfo pet={pet}/>
        </ScrollView>
 
        {/**Adopt me button */}
