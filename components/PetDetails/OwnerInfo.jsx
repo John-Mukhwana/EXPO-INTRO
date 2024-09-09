@@ -13,7 +13,7 @@ export default function OwnerInfo({pet}) {
               <Text style={styles.petOwner} >Pet Owner</Text>
        </View>
        </View>
-       <Ionicons name="send-sharp" size={24} color="black" />
+       <Ionicons name="send-sharp" size={24} color={Colors.PRIMARY} />
     </View>
   )
 }
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         gap:20,
         borderWidth:1,
         borderRadius:15,
+        borderColor:Colors.PRIMARY,
         padding:10,
         backgroundColor:Colors.WHITE,
         justifyContent:'space-between'
