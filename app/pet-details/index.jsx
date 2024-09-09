@@ -33,6 +33,9 @@ export default function petDetails() {
        {/*owner details*/}
        <OwnerInfo pet={pet}/>
        </ScrollView>
+       <View style={{height:70}}>
+
+       </View>
 
        {/**Adopt me button */}
     </View>
