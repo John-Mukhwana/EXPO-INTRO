@@ -3,10 +3,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function AboutPet() {
+export default function AboutPet({pet}) {
   return (
-    <View>
-      <Text>AboutPet</Text>
+    <View style={{padding:20}}>
+
+      <Text style={{fontFamily:'outfit-medium',fontSize:20}}>About{pet?.name}</Text>
     </View>
   )
 }

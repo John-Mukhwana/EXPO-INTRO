@@ -21,7 +21,6 @@ export default function PetSubInfo({pet}) {
        />
       </View>
       <View style={{display:'flex',flexDirection:'row'}} >
-
        <PetSubInfoCard 
        icon={require('./../../assets/images/sex.png')} 
        title={'Sex'}
