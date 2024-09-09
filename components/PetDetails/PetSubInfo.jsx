@@ -9,7 +9,16 @@ export default function PetSubInfo({pet}) {
     <View style={{padding:20}}>
       <View style={{display:'flex',flexDirection:'row'}} >
 
-       <PetSubInfoCard/>
+       <PetSubInfoCard 
+       icon={require('./../../assets/images/calendar.png')} 
+       title={'Age'}
+        value={pet.age}
+       />
+       <PetSubInfoCard 
+       icon={require('./../../assets/images/bone.png')}
+       title={'Breed'}
+        value={pet.breed}
+       />
       </View>
     </View>
   )
