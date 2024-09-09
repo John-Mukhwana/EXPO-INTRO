@@ -25,7 +25,7 @@ export default function petDetails() {
        {/* Pet properties */}
          <PetSubInfo pet={pet}/>
        {/* about */}
-       <AboutPet/>
+       <AboutPet pet={pet}/>
 
        {/*owner details*/}
 
