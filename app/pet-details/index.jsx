@@ -1,5 +1,5 @@
 
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
 import { useEffect } from 'react';
@@ -20,18 +20,19 @@ export default function petDetails() {
     },[])
   return (
     <View>
+      <ScrollView>
+
        {/* Pet info */}
-         <PetInfo pet={pet}/>
+        <PetInfo pet={pet}/>
        {/* Pet properties */}
          <PetSubInfo pet={pet}/>
        {/* about */}
        <AboutPet pet={pet}/>
 
        {/*owner details*/}
+       </ScrollView>
 
        {/**Adopt me button */}
-
-
     </View>
   )
 }
