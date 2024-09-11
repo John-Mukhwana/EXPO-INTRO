@@ -2,7 +2,7 @@
 import {doc,getDoc,setDoc} from 'firebase/firestore';
 import {db} from './../config/FirebaseConfig'
 
-export const GetFavList=async(user)=>{
+ const GetFavList=async(user)=>{
     const docSnap=await getDoc(doc(db,'UserFavPet',user?.primaryEmailAddress?.emaiAddress))
     if(docSnap.exists())
     {
@@ -13,4 +13,8 @@ export const GetFavList=async(user)=>{
             email:user?.primaryEmailAddress?.emaiAddress
         })
     }
+}
+
+export default{
+    GetFavList
 }
