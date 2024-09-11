@@ -14,7 +14,7 @@ export default function PetInfo({pet}) {
             <Text style={{fontFamily:'outfit-medium',fontSize:27}}>{pet.name}</Text>
             <Text style={{fontFamily:'outfit',fontSize:17,color:Colors.GRAY}}>{pet.address}</Text>
         </View>
-           <MarkFav/>
+           <MarkFav pet={pet}/>
       </View>
     </View>
   )
