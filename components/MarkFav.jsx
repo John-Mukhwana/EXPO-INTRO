@@ -21,13 +21,19 @@ export default function MarkFav({pet}) {
   const AddToFav = async () => {
      const favResult=favList;
       favResult.push(pet?.id)
+      console.log(pet.id);
       await Shared.UpdateFav(user,favResult);
+      GetFav();
+  }
+  const removeFromFav=async()=>{
+     const favResult=favList.filter(item=>item!==pet?.id)
+     await Shared.UpdateFav(user,favResult);
       GetFav();
   }
   return (
   <View>
     {favList?.includes(pet?.id)?
-    <Pressable>
+    <Pressable onPress={removeFromFav}>
       <Ionicons name="heart" size={24} color="red" />
     </Pressable>
     :
