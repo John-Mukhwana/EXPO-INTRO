@@ -1,6 +1,6 @@
 
 
-import { View, Text,StyleSheet,TouchableOpacity } from 'react-native'
+import { View, Text,StyleSheet,Link} from 'react-native'
 import React from 'react'
 import Header from '../../components/Home/Header'
 import Slider from '../../components/Home/Slider'
@@ -24,12 +24,13 @@ export default function Home() {
 
 
       {/* Add new pet option */}
-      < TouchableOpacity style={styles?.addNewPetContainer} >
+      < Link href={''}
+       style={styles?.addNewPetContainer} >
       <MaterialIcons name="pets" size={24} color="black" />
 
         <Text style={{fontFamily:'outfit-medium',fontSize:18}}>Add New Pet</Text>
 
-      </TouchableOpacity>
+      </Link>
 
 
     </View>
