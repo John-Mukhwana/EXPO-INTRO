@@ -1,6 +1,7 @@
 
 
-import { View, Text,StyleSheet,Link} from 'react-native'
+import { View, Text,StyleSheet,} from 'react-native'
+import { Link } from 'expo-router';
 import React from 'react'
 import Header from '../../components/Home/Header'
 import Slider from '../../components/Home/Slider'
@@ -24,7 +25,7 @@ export default function Home() {
 
 
       {/* Add new pet option */}
-      < Link href={''}
+      < Link href={'/add-new-pet'}
        style={styles?.addNewPetContainer} >
       <MaterialIcons name="pets" size={24} color="black" />
 
