@@ -2,7 +2,7 @@
 
 import { View, Text, Image ,TextInput,StyleSheet} from 'react-native'
 import { useNavigation } from 'expo-router';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, } from 'react'
 import Colors from './../../constants/Colors';
 import { ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native';
@@ -10,6 +10,7 @@ import { TouchableOpacity } from 'react-native';
 
 export default function AddNewPet() {
   const  navigation = useNavigation();
+  const[formData,setFormData]=useState();
 
   useEffect(()=>{
     navigation.setOptions({
@@ -17,7 +18,10 @@ export default function AddNewPet() {
     })
   })
   const handleInputChange=(fieldName,FieldValue)=>{
-    console.log(fieldName,FieldValue);
+    setFormData(prev=>({
+      ...prev,
+      [fieldName]:fieldValue
+    }))
   }
 
   return (
