@@ -17,7 +17,7 @@ export default function AddNewPet() {
       title:'Add New Pet'
     })
   })
-  const handleInputChange=(fieldName,FieldValue)=>{
+  const handleInputChange=(fieldName,fieldValue)=>{
     setFormData(prev=>({
       ...prev,
       [fieldName]:fieldValue
