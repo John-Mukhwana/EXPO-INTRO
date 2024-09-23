@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     display:'flex',
     flexDirection:'row',
     borderStyle:'dashed',
+    textAlign:'center',
     gap:10,
     padding:15,
     marginTop:20,
