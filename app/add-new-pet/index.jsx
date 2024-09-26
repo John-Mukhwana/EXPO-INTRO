@@ -12,6 +12,7 @@ import { Picker } from '@react-native-picker/picker';
 export default function AddNewPet() {
   const  navigation = useNavigation();
   const[formData,setFormData]=useState();
+  const[gender,setGender]=useState();
 
   useEffect(()=>{ 
     navigation.setOptions({
@@ -53,15 +54,18 @@ export default function AddNewPet() {
           onChangeText={(value=>handleInputChange('age',value))}
           />
         </View>
-
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Gender *</Text>
         <Picker
-             selectedValue={selectedLanguage}
+             selectedValue={gender}
+             style={styles.input}
              onValueChange={(itemValue, itemIndex) =>
-             setSelectedLanguage(itemValue)
+             setGender(itemValue)
             }>
            <Picker.Item label="Male" value="Male" />
            <Picker.Item label="Female" value="Female" />
         </Picker>
+        </View>
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Weight*</Text>
