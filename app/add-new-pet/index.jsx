@@ -7,25 +7,40 @@ import Colors from './../../constants/Colors';
 import { ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import {collection,getDocs} from 'firebase/firestore'
+import {db} from './../../config/FirebaseConfig'
 
 
 export default function AddNewPet() {
   const  navigation = useNavigation();
   const[formData,setFormData]=useState();
   const[gender,setGender]=useState();
-
+  const [categoryList,setCategoryList]=useState([]);
+  const [selectedCategory,setSelectedCategory]=useState([]);
+  
   useEffect(()=>{ 
     navigation.setOptions({
       title:'Add New Pet'
     })
+    GetCategories();
+  },[])
+
+  const GetCategories=async () =>{
+    setCategoryList([]);
+    const snapshot = await getDocs(collection(db,'Category'));
+    snapshot.forEach((doc)=>{
+      setCategoryList(categoryList=>[...categoryList,doc.data()]);
   })
-  const handleInputChange=(fieldName,fieldValue)=>{
+
+   const handleInputChange=(fieldName,fieldValue)=>{
     setFormData(prev=>({
       ...prev,
       [fieldName]:fieldValue
     }))
   }
+   
 
+   }
   return (
     <ScrollView style={{padding:20, }}>
       <Text style={{
@@ -39,6 +54,22 @@ export default function AddNewPet() {
           <TextInput style={styles.input}
           onChangeText={(value=>handleInputChange('name',value))}
           />
+        </View>
+                            
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Pet Category *</Text>
+        <Picker
+             selectedValue={selectedCategory}
+             style={styles.input}
+             onValueChange={(itemValue, itemIndex) =>{
+             setSelectedCategory(itemValue);
+             handleInputChange('Category',itemValue)
+             }}>
+              {categoryList.map((Category,index)=>(
+                <Picker.Item label={Category.name} value={Category.name} key={index}/>
+              ))}
+         
+        </Picker>
         </View>
 
         <View style={styles.inputContainer}>
