@@ -59,9 +59,10 @@ export default function AddNewPet() {
         <Picker
              selectedValue={gender}
              style={styles.input}
-             onValueChange={(itemValue, itemIndex) =>
-             setGender(itemValue)
-            }>
+             onValueChange={(itemValue, itemIndex) =>{
+             setGender(itemValue);
+             handleInputChange('sex',itemValue)
+             }}>
            <Picker.Item label="Male" value="Male" />
            <Picker.Item label="Female" value="Female" />
         </Picker>
