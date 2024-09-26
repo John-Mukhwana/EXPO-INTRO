@@ -6,13 +6,14 @@ import React, { useEffect, useState, } from 'react'
 import Colors from './../../constants/Colors';
 import { ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 
 export default function AddNewPet() {
   const  navigation = useNavigation();
   const[formData,setFormData]=useState();
 
-  useEffect(()=>{
+  useEffect(()=>{ 
     navigation.setOptions({
       title:'Add New Pet'
     })
@@ -52,6 +53,15 @@ export default function AddNewPet() {
           onChangeText={(value=>handleInputChange('age',value))}
           />
         </View>
+
+        <Picker
+             selectedValue={selectedLanguage}
+             onValueChange={(itemValue, itemIndex) =>
+             setSelectedLanguage(itemValue)
+            }>
+           <Picker.Item label="Male" value="Male" />
+           <Picker.Item label="Female" value="Female" />
+        </Picker>
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Weight*</Text>
