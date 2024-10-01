@@ -39,6 +39,9 @@ export default function AddNewPet() {
     }))
   }
    
+  const onSubmit=()=>{
+    console.log(formData);
+  }
 
    }
   return (
@@ -121,7 +124,7 @@ export default function AddNewPet() {
           onChangeText={(value=>handleInputChange('about',value))}
           />
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={onSubmit}> 
           <Text style={{fontFamily:'outfit-medium',textAlign:'center'}}>Submit</Text>
         </TouchableOpacity>
 
@@ -141,6 +144,7 @@ const styles = StyleSheet.create({
     borderRadius:7,
     borderWidth:1,
     fontFamily:'outfit',
+    margiButon:50
     
 
 
