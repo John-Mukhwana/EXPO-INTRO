@@ -1,19 +1,22 @@
 
 
 import { View, Text, Image ,TextInput,StyleSheet, Pressable, ToastAndroid} from 'react-native'
-import { useNavigation } from 'expo-router';
+import { useNavigation, useRouter } from 'expo-router';
 import React, { useEffect, useState, } from 'react'
 import Colors from './../../constants/Colors';
 import { ScrollView } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import {collection,getDocs} from 'firebase/firestore'
+import {collection,doc,getDocs, setDoc} from 'firebase/firestore'
 import {db} from './../../config/FirebaseConfig'
 import * as ImagePicker from 'expo-image-picker';
 import { getDownloadURL, uploadBytes } from 'firebase/storage';
+import { useUser } from '@clerk/clerk-expo';
 
 
 export default function AddNewPet() {
+
+  const {user}=useUser();
   const  navigation = useNavigation();
   const[formData,setFormData]=useState(
     [
@@ -24,6 +27,9 @@ export default function AddNewPet() {
   const [categoryList,setCategoryList]=useState([]);
   const [selectedCategory,setSelectedCategory]=useState([]);
   const [image,setImage]=useState();
+  const [loader,setLoader]=useState(false);
+  const  router=useRouter();
+
   useEffect(()=>{ 
     navigation.setOptions({
       title:'Add New Pet'
@@ -67,12 +73,14 @@ export default function AddNewPet() {
       ToastAndroid.show('All fields are required',ToastAndroid.SHORT)
       return;
     }
+
     UploadImage();
   }
   /**
    * Method used to upload image to firebase storage
    */
    const UploadImage=async()=>{
+    setLoader(true);
     const resp=await fetch(image);
     const blobImage=await resp.blob();
     const storageRef=ref(storage,'/PetAdopt/'+Date.now()+'.jpg');
@@ -83,10 +91,26 @@ export default function AddNewPet() {
     }).then(resp=>{
       getDownloadURL(storageRef).then(async(downloadUrl)=>{
         console.log(downloadUrl);
+        SaveFormData(downloadUrl);
       })
     })
    }
 
+   }
+
+   const SaveFormData=async(imageUrl)=>{
+    const docId=Date.now().toString();
+    await setDoc(doc(db,'pets',docId),{
+       ...formData,
+       imageUrl:imageUrl,
+       username:user?.fullName,
+       email:user.primaryEmailAddress?.emailAddress,
+       userImage:user?.imageUrl,
+       id:docId,
+    })
+    setLoader(false);
+    ToastAndroid.show('Pet added successfully',ToastAndroid.SHORT)
+    router.replace('/(tabs)/home')
    }
   return (
     <ScrollView style={{padding:20, }}>
@@ -186,8 +210,11 @@ export default function AddNewPet() {
           onChangeText={(value=>handleInputChange('about',value))}
           />
         </View>
-        <TouchableOpacity style={styles.button} onPress={onSubmit}> 
-          <Text style={{fontFamily:'outfit-medium',textAlign:'center'}}>Submit</Text>
+        <TouchableOpacity style={styles.button}
+         disabled={loader}
+         onPress={onSubmit}> 
+         {loader?<ActivityIndicator  size={'large'} />:
+          <Text style={{fontFamily:'outfit-medium',textAlign:'center'}}>Submit</Text>}
         </TouchableOpacity>
 
 
