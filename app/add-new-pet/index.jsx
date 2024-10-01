@@ -1,6 +1,6 @@
 
 
-import { View, Text, Image ,TextInput,StyleSheet, Pressable} from 'react-native'
+import { View, Text, Image ,TextInput,StyleSheet, Pressable, ToastAndroid} from 'react-native'
 import { useNavigation } from 'expo-router';
 import React, { useEffect, useState, } from 'react'
 import Colors from './../../constants/Colors';
@@ -10,11 +10,16 @@ import { Picker } from '@react-native-picker/picker';
 import {collection,getDocs} from 'firebase/firestore'
 import {db} from './../../config/FirebaseConfig'
 import * as ImagePicker from 'expo-image-picker';
+import { getDownloadURL, uploadBytes } from 'firebase/storage';
 
 
 export default function AddNewPet() {
   const  navigation = useNavigation();
-  const[formData,setFormData]=useState();
+  const[formData,setFormData]=useState(
+    [
+      {category:'Dogs',sex:'Male'}
+    ]
+  );
   const[gender,setGender]=useState();
   const [categoryList,setCategoryList]=useState([]);
   const [selectedCategory,setSelectedCategory]=useState([]);
@@ -58,8 +63,29 @@ export default function AddNewPet() {
   }
    
   const onSubmit=()=>{
-    console.log(formData);
+    if(Object.keys(formData).length!=8){
+      ToastAndroid.show('All fields are required',ToastAndroid.SHORT)
+      return;
+    }
+    UploadImage();
   }
+  /**
+   * Method used to upload image to firebase storage
+   */
+   const UploadImage=async()=>{
+    const resp=await fetch(image);
+    const blobImage=await resp.blob();
+    const storageRef=ref(storage,'/PetAdopt/'+Date.now()+'.jpg');
+    
+    uploadBytes(storageRef,blob).then((snapshot)=>{
+      console.log('Uploaded a blob or file!');
+      
+    }).then(resp=>{
+      getDownloadURL(storageRef).then(async(downloadUrl)=>{
+        console.log(downloadUrl);
+      })
+    })
+   }
 
    }
   return (
@@ -119,6 +145,7 @@ export default function AddNewPet() {
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Age*</Text>
           <TextInput style={styles.input}
+          keyboardType='numeric-pad'
           onChangeText={(value=>handleInputChange('age',value))}
           />
         </View>
@@ -139,6 +166,7 @@ export default function AddNewPet() {
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Weight*</Text>
           <TextInput style={styles.input}
+          keyboardType='numeric-pad'
           onChangeText={(value=>handleInputChange('weight',value))}
           />
         </View>
