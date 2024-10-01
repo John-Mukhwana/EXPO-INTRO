@@ -77,7 +77,7 @@ export default function AddNewPet() {
     const blobImage=await resp.blob();
     const storageRef=ref(storage,'/PetAdopt/'+Date.now()+'.jpg');
     
-    uploadBytes(storageRef,blob).then((snapshot)=>{
+    uploadBytes(storageRef,blobImage).then((snapshot)=>{
       console.log('Uploaded a blob or file!');
       
     }).then(resp=>{
