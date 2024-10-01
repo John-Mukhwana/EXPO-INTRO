@@ -9,6 +9,7 @@ import { TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import {collection,getDocs} from 'firebase/firestore'
 import {db} from './../../config/FirebaseConfig'
+import * as ImagePicker from 'expo-image-picker';
 
 
 export default function AddNewPet() {
@@ -17,7 +18,7 @@ export default function AddNewPet() {
   const[gender,setGender]=useState();
   const [categoryList,setCategoryList]=useState([]);
   const [selectedCategory,setSelectedCategory]=useState([]);
-  
+  const [image,setImage]=useState();
   useEffect(()=>{ 
     navigation.setOptions({
       title:'Add New Pet'
@@ -31,6 +32,23 @@ export default function AddNewPet() {
     snapshot.forEach((doc)=>{
       setCategoryList(categoryList=>[...categoryList,doc.data()]);
   })
+     
+  //image picker function used to pick image from gallery
+  const imagePicker=async()=>{
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  }
+
 
    const handleInputChange=(fieldName,fieldValue)=>{
     setFormData(prev=>({
