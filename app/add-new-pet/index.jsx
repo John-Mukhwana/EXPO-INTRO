@@ -1,6 +1,6 @@
 
 
-import { View, Text, Image ,TextInput,StyleSheet} from 'react-native'
+import { View, Text, Image ,TextInput,StyleSheet, Pressable} from 'react-native'
 import { useNavigation } from 'expo-router';
 import React, { useEffect, useState, } from 'react'
 import Colors from './../../constants/Colors';
@@ -68,7 +68,23 @@ export default function AddNewPet() {
         fontFamily:'outfit-medium',
         fontSize:16,
         }}>Add New Pet for adoption</Text>
-        <Image source={require('../../assets/images/placeholder.png')} style={{width:100, height: 100, borderRadius:15 ,borderWidth:1,borderColor:Colors.GRAY}} />
+
+        <Pressable onPress={imagePicker}>
+
+        {!image?<Image source={require('../../assets/images/placeholder.png')} style={{
+          width:100, 
+          height: 100, 
+          borderRadius:15 ,
+          borderWidth:1,
+          borderColor:Colors.GRAY
+          }} />:
+          <Image source={{uri:image}} style={{
+            width:100, 
+            height: 100, 
+            borderRadius:15 
+            }} />
+        }
+        </Pressable>
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Pet Name*</Text>
