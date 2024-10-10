@@ -52,9 +52,10 @@ export default function petDetails() {
               email:pet?.email,
               imageUrl:pet?.userImage,
               name:pet?.userName
-            }
-
-          ]
+            },
+          
+          ],
+          userIds:[user?.primaryEmailAddress?.emailAddress,pet?.email]
         })
        }
        router.push({
