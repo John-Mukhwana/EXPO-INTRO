@@ -17,7 +17,7 @@ export default function Profile() {
       id:1,
       name:'Add New Pet',
       icon:'add-circle',
-      path:'/add-new-pe'
+      path:'/../add-new-pet'
     },
     {
       id:2,
@@ -40,7 +40,7 @@ export default function Profile() {
       id:5,
       name:'My Posts',
       icon:'bookmark',
-      path:'/user-posts'
+      path:'/../user-posts'
 
     }
   ]
