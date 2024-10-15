@@ -42,7 +42,7 @@ export default function UserPost() {
         Alert.alert('Delete Post','Are you sure you want to delete this post?',[
             {
                text:'Cancel',
-               onPress:()=>console.log('Cancel Pressed')
+            //    onPress:()=>console.log('Cancel Pressed')
             },
             {
                 text:'Delete',
