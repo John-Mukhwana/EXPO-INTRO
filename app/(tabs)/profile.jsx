@@ -35,6 +35,13 @@ export default function Profile() {
       id:4,
       name:'exit',
       path:'logout'
+    },
+    {
+      id:5,
+      name:'My Posts',
+      icon:'bookmark',
+      path:'/user-posts'
+
     }
   ]
   const onPressMenu=(item)=>{
