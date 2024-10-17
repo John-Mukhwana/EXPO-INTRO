@@ -1,20 +1,19 @@
-
-import { View, Text } from 'react-native'
-import React from 'react'
-import {Tabs} from 'expo-router'
+import { View, Text } from 'react-native';
+import React from 'react';
+import { Tabs } from 'expo-router';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import Colors from './../../constants/Colors'
-
+import Colors from './../../constants/Colors';
 
 export default function TabLayout() {
   return (
-    <Tabs   
-       screenOptions={{
-          tabBarActiveTintColor:Colors.PRIMARY
-       }}
-     >
-
-
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors.PRIMARY,
+        tabBarIcon: ({ color, size }) => (
+          <Ionicons name="home" color={color} size={size} />
+        ),
+      }}
+    >
       <Tabs.Screen name='home'
          options={{
             title: 'Home',
@@ -44,5 +43,5 @@ export default function TabLayout() {
        }}
       />
     </Tabs>
-  )
+  );
 }

@@ -8,7 +8,6 @@ import Colors from '../constants/Colors'
 import { useRouter } from 'expo-router'
 
 export default function Profile() {
-  icon=Ionicons
   const router=useRouter()
   const {user}=useUser()
   const {signOut}=useAuth()

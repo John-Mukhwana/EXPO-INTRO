@@ -6,7 +6,7 @@ import {collection,deleteDoc,doc,where } from 'firebase/firestore'
 import {db} from '../../config/FirebaseConfig'
 import {query} from 'firebase/database'
 import {useUser} from '@clerk/clerk-react'
-import PetListItem from '../components/PetListItem'
+import PetListItem from '../../components/Home/PetListItem'
 import { StyleSheet } from 'react-native-web'
 
 export default function UserPost() {
